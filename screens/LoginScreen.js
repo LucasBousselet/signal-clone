@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Image, Input } from 'react-native-elements'
 import { StatusBar } from 'expo-status-bar'
 import { useNavigation } from '@react-navigation/native';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 
 export default function LoginScreen() {
@@ -24,7 +24,8 @@ export default function LoginScreen() {
     }, [])
 
     const signIn = () => {
-
+        signInWithEmailAndPassword(auth, email, password)
+            .catch(error => alert(error))
     }
 
     return (
@@ -53,6 +54,7 @@ export default function LoginScreen() {
                     secureTextEntry
                     value={password}
                     onChangeText={setPassword}
+                    onSubmitEditing={signIn}
                 />
             </View>
 

@@ -24,7 +24,7 @@ export default function RegisterScreen() {
             .then(authUser => {
                 updateProfile(authUser.user, {
                     displayName: name,
-                    photoURL: imageURL || 'https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png'
+                    photoURL: imageURL || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'
                 }).then(() => {
                     // Profile updated!
                     // ...
