@@ -10,12 +10,12 @@ import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries 
 // Your web app's Firebase configuration 
 const firebaseConfig = {
-    apiKey: "AIzaSyA2ep7xBqr_fcHHsjVLlddBRIUdq-CPPRE",
-    authDomain: "signal-clone-9926c.firebaseapp.com",
-    projectId: "signal-clone-9926c",
-    storageBucket: "signal-clone-9926c.appspot.com",
-    messagingSenderId: "205984209583",
-    appId: "1:205984209583:web:b2626b6de04578e28ed25a"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGIN_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID
 };
 
 // Initialize Firebase
