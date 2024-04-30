@@ -24,6 +24,7 @@ export default function LoginScreen() {
     }, [])
 
     const signIn = () => {
+        console.log(email)
         signInWithEmailAndPassword(auth, email, password)
             .catch(error => alert(error))
     }
