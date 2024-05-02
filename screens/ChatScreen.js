@@ -27,7 +27,9 @@ export default function ChatScreen({ route }) {
                 }}>
                     <Avatar
                         rounded
-                        source={require('../assets/empty-avatar.png')}
+                        source={messages[0]?.data.photoURL ? {
+                            uri: messages[0]?.data.photoURL
+                        } : require('../assets/empty-avatar.png')}
                     />
                     <Text style={{
                         color: 'white',
@@ -57,7 +59,7 @@ export default function ChatScreen({ route }) {
                 </View>
             )
         });
-    }, []);
+    }, [navigation, messages]);
 
     useLayoutEffect(() => {
         const unsub = onSnapshot(
@@ -92,7 +94,6 @@ export default function ChatScreen({ route }) {
             flex: 1,
             backgroundColor: 'white'
         }}>
-            <StatusBar style='light' />
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 keyboardVerticalOffset={90}
@@ -105,7 +106,6 @@ export default function ChatScreen({ route }) {
                         <FlatList
                             inverted
                             data={messages}
-                            className='pt-4'
                             keyExtractor={item => item.id}
                             renderItem={({ item }) => item.data.email === auth.currentUser.email ? (
                                 <View style={styles.sender}>
